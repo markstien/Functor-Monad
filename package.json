@@ -1,0 +1,23 @@
+{
+  "name": "fm",
+  "version": "0.0.1",
+  "description": "函数式容器库",
+  "main": "index.js",
+  "scripts": {
+    "test": "cnpm run build &node ./dist/fm.js",
+    "build": "webpack --config webpack.config.js"
+  },
+  "keywords": [
+    "函数式容器库，functor",
+    "monad"
+  ],
+  "author": "Markstien·Song",
+  "license": "ISC",
+  "dependencies": {
+    "ramda": "^0.26.1"
+  },
+  "devDependencies": {
+    "webpack": "^4.41.0",
+    "webpack-cli": "^3.3.9"
+  }
+}
