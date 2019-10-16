@@ -1,5 +1,6 @@
 import {curry} from "./environment/environment";
-import {of,map} from "./environment/Functor";
+import {of, map, ap} from "./environment/Functor";
+import {Container} from "./Container";
 
 const Left=function (x) {
     this.value=x;
@@ -19,6 +20,9 @@ Right.of=function (x) {
 };
 Right.prototype.map=function (f) {
     return Right.of(f(this.value));
+};
+Right.prototype.ap=function (otherContainer) {
+    return ap.call(this,otherContainer);
 };
 const either=curry(function (l,r,e) {
     switch (e.constructor) {

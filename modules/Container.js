@@ -1,4 +1,4 @@
-import {of} from "./environment/Functor";
+import {of,ap} from "./environment/Functor";
 
 const Container=function (x) {
     this.value=x;
@@ -17,9 +17,10 @@ Container.prototype.join=function(){
 };
 Container.prototype.chain=function(f){
     return chain.call(this,f);
-};
+};*/
+
 Container.prototype.ap=function (otherContainer) {
     return ap.call(this,otherContainer);
-};*/
+};
 
 export {Container};

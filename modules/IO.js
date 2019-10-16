@@ -18,5 +18,8 @@ IO.prototype.join=function () {
 IO.prototype.chain=function (f) {
     return chain.call(this,f);
 };
+IO.prototype.ap=function (otherContainer) {
+    return otherContainer.map(this.do());
+};
 
 export {IO};

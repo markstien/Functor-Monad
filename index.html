@@ -4,17 +4,30 @@
     <meta http-equiv="Cache-Control" content="no-store">
     <meta charset="UTF-8">
     <title>测试</title>
-    <script src="dist/fm.js?b=4"></script>
+    <script src="dist/fm.js?c=8"></script>
     <script src="src/ramda.min.js"></script>
 </head>
 <body>
 <div id="main">??</div>
 
 <script>
-    let a=fm.Maybe.of(null).chain(function (three) {
-        return fm.Maybe.of(2).map(R.add(three));
+    const $=function (selector) {
+        return new fm.IO(function () {
+            return document.querySelector(selector);
+        })
+    };
+    const getVal=R.compose(R.map(R.prop("innerHTML")),$);
+    const signIn=R.curry(function (username,password,remember_me) {
+        console.log(username,password,remember_me);
     });
-    console.log(a);
+    let d=fm.IO.of(signIn)
+        .ap(getVal('#main'))
+        .ap(getVal('#main'))
+        .ap(fm.IO.of(false));
+    //d.do();
+    
+    console.log(fm.untils.liftA2(R.add,fm.Maybe.of(2),fm.Maybe.of(3)));
+
 </script>
 </body>
 </html>

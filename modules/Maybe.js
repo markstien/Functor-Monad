@@ -1,5 +1,6 @@
 import {curry} from "./environment/environment";
-import {of,map,isNothing,join,chain} from "./environment/Functor";
+import {of, map, isNothing, join, chain, ap} from "./environment/Functor";
+import {Container} from "./Container";
 const Maybe=function (x) {
     this.value=x;
 };
@@ -20,5 +21,8 @@ Maybe.prototype.join=function () {
 };
 Maybe.prototype.chain=function (f) {
     return chain.call(this,f);
+};
+Maybe.prototype.ap=function (otherContainer) {
+    return ap.call(this,otherContainer);
 };
 export {Maybe};
