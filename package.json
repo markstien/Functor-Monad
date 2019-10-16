@@ -4,7 +4,7 @@
   "description": "函数式容器库",
   "main": "index.js",
   "scripts": {
-    "test": "cnpm run build &node ./dist/fm.js",
+    "test": "cnpm run build && node ./dist/fm.js",
     "build": "webpack --config webpack.config.js"
   },
   "keywords": [

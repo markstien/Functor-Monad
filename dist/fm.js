@@ -90,11 +90,11 @@
 /*!******************!*\
   !*** ./index.js ***!
   \******************/
-/*! no exports provided */
+/*! exports provided: fm */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_Container__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/Container */ \"./modules/Container.js\");\n/* harmony import */ var _modules_Maybe__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/Maybe */ \"./modules/Maybe.js\");\n/* harmony import */ var _modules_Either__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/Either */ \"./modules/Either.js\");\n/* harmony import */ var _modules_IO__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/IO */ \"./modules/IO.js\");\n\r\n\r\n\r\n\r\n\r\nconst re1=function () {\r\n    return \"re1\";\r\n};\r\n\r\nconst io_1=_modules_IO__WEBPACK_IMPORTED_MODULE_3__[\"IO\"].of(re1);\r\nconst a=io_1.map(function (e) {\r\n    console.log(\"a:\"+e);\r\n});\r\na.do().do();\r\n\n\n//# sourceURL=webpack:///./index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"fm\", function() { return fm; });\n/* harmony import */ var _modules_Container__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/Container */ \"./modules/Container.js\");\n/* harmony import */ var _modules_Maybe__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/Maybe */ \"./modules/Maybe.js\");\n/* harmony import */ var _modules_Either__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/Either */ \"./modules/Either.js\");\n/* harmony import */ var _modules_IO__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/IO */ \"./modules/IO.js\");\n/* harmony import */ var _modules_environment_untils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/environment/untils */ \"./modules/environment/untils.js\");\n\r\n\r\n\r\n\r\n\r\n\r\n//test only\r\nconsole.log(\"FM.js is Running...\");\r\n\r\nconst fm={Container: _modules_Container__WEBPACK_IMPORTED_MODULE_0__[\"Container\"], Maybe: _modules_Maybe__WEBPACK_IMPORTED_MODULE_1__[\"Maybe\"], Left: _modules_Either__WEBPACK_IMPORTED_MODULE_2__[\"Left\"], Right: _modules_Either__WEBPACK_IMPORTED_MODULE_2__[\"Right\"], either: _modules_Either__WEBPACK_IMPORTED_MODULE_2__[\"either\"], IO: _modules_IO__WEBPACK_IMPORTED_MODULE_3__[\"IO\"], untils: _modules_environment_untils__WEBPACK_IMPORTED_MODULE_4__[\"untils\"],};\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\ntry {\r\n    window.fm=fm;\r\n    console.log(window.fm);\r\n}\r\ncatch (e) {\r\n\r\n}\r\n\r\n\r\n\r\n\r\n\n\n//# sourceURL=webpack:///./index.js?");
 
 /***/ }),
 
@@ -130,7 +130,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"IO\", function() { return IO; });\n/* harmony import */ var _environment_environment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./environment/environment */ \"./modules/environment/environment.js\");\n\r\n\r\nconst IO=function (f) {\r\n    this.do=f;\r\n};\r\nIO.of=function (x) {\r\n    return new IO(function () {\r\n        return x;\r\n    })\r\n};\r\nIO.prototype.map=function (f) {\r\n    return new IO(Object(_environment_environment__WEBPACK_IMPORTED_MODULE_0__[\"compose\"])(f,this.do));\r\n};\r\n\r\n\r\n\n\n//# sourceURL=webpack:///./modules/IO.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"IO\", function() { return IO; });\n/* harmony import */ var _environment_environment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./environment/environment */ \"./modules/environment/environment.js\");\n/* harmony import */ var _environment_Functor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./environment/Functor */ \"./modules/environment/Functor.js\");\n\r\n\r\n\r\nconst IO=function (f) {\r\n    this.do=f;\r\n};\r\nIO.of=function (x) {\r\n    return new IO(function () {\r\n        return x;\r\n    })\r\n};\r\nIO.prototype.map=function (f) {\r\n    return new IO(Object(_environment_environment__WEBPACK_IMPORTED_MODULE_0__[\"compose\"])(f,this.do));\r\n};\r\nIO.prototype.join=function () {\r\n  return this.do();\r\n};\r\nIO.prototype.chain=function (f) {\r\n    return _environment_Functor__WEBPACK_IMPORTED_MODULE_1__[\"chain\"].call(this,f);\r\n};\r\n\r\n\r\n\n\n//# sourceURL=webpack:///./modules/IO.js?");
 
 /***/ }),
 
@@ -142,7 +142,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"Maybe\", function() { return Maybe; });\n/* harmony import */ var _environment_environment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./environment/environment */ \"./modules/environment/environment.js\");\n/* harmony import */ var _environment_Functor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./environment/Functor */ \"./modules/environment/Functor.js\");\n\r\n\r\nconst Maybe=function (x) {\r\n    this.value=x;\r\n};\r\nMaybe.of=function (x) {\r\n    return _environment_Functor__WEBPACK_IMPORTED_MODULE_1__[\"of\"].call(this,x);\r\n};\r\nMaybe.prototype.isNothing=function () {\r\n    return _environment_Functor__WEBPACK_IMPORTED_MODULE_1__[\"isNothing\"].call(this);\r\n};\r\nMaybe.prototype.map=function (f) {\r\n    return _environment_Functor__WEBPACK_IMPORTED_MODULE_1__[\"map\"].call(this,f);\r\n};\r\nMaybe.prototype.maybe=Object(_environment_environment__WEBPACK_IMPORTED_MODULE_0__[\"curry\"])(function (x,f,m) {\r\n    return m.isNothing()?x:f(m.value);\r\n});\r\n\n\n//# sourceURL=webpack:///./modules/Maybe.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"Maybe\", function() { return Maybe; });\n/* harmony import */ var _environment_environment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./environment/environment */ \"./modules/environment/environment.js\");\n/* harmony import */ var _environment_Functor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./environment/Functor */ \"./modules/environment/Functor.js\");\n\r\n\r\nconst Maybe=function (x) {\r\n    this.value=x;\r\n};\r\nMaybe.of=function (x) {\r\n    return _environment_Functor__WEBPACK_IMPORTED_MODULE_1__[\"of\"].call(this,x);\r\n};\r\nMaybe.prototype.isNothing=function () {\r\n    return _environment_Functor__WEBPACK_IMPORTED_MODULE_1__[\"isNothing\"].call(this);\r\n};\r\nMaybe.prototype.map=function (f) {\r\n    return _environment_Functor__WEBPACK_IMPORTED_MODULE_1__[\"map\"].call(this,f);\r\n};\r\nMaybe.prototype.maybe=Object(_environment_environment__WEBPACK_IMPORTED_MODULE_0__[\"curry\"])(function (x,f,m) {\r\n    return m.isNothing()?x:f(m.value);\r\n});\r\nMaybe.prototype.join=function () {\r\n    return _environment_Functor__WEBPACK_IMPORTED_MODULE_1__[\"join\"].call(this);\r\n};\r\nMaybe.prototype.chain=function (f) {\r\n    return _environment_Functor__WEBPACK_IMPORTED_MODULE_1__[\"chain\"].call(this,f);\r\n};\r\n\n\n//# sourceURL=webpack:///./modules/Maybe.js?");
 
 /***/ }),
 
@@ -162,11 +162,23 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /*!********************************************!*\
   !*** ./modules/environment/environment.js ***!
   \********************************************/
-/*! exports provided: curry, compose, extend */
+/*! exports provided: curry, compose, id, trace */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"curry\", function() { return curry; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"compose\", function() { return compose; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"extend\", function() { return extend; });\nconst R = __webpack_require__(/*! ramda */ \"./node_modules/_ramda@0.26.1@ramda/es/index.js\");\r\n//常用方法\r\nconst curry=R.curry;\r\nconst compose=R.compose;\r\nconst extend=function (Sub,Super) {\r\n    const prototype=Object(Super.prototype);\r\n    prototype.constructor=Sub;\r\n    Sub.prototype=prototype;\r\n};\r\n\n\n//# sourceURL=webpack:///./modules/environment/environment.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"curry\", function() { return curry; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"compose\", function() { return compose; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"id\", function() { return id; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"trace\", function() { return trace; });\nconst R = __webpack_require__(/*! ramda */ \"./node_modules/_ramda@0.26.1@ramda/es/index.js\");\r\n//常用方法\r\nconst curry=R.curry;\r\nconst compose=R.compose;\r\n\r\nconst trace=R.curry(function (tag,x) {\r\n    console.log(tag,x);\r\n    return x;\r\n});\r\nconst id=function (x) {\r\n    return x;\r\n};\r\n\n\n//# sourceURL=webpack:///./modules/environment/environment.js?");
+
+/***/ }),
+
+/***/ "./modules/environment/untils.js":
+/*!***************************************!*\
+  !*** ./modules/environment/untils.js ***!
+  \***************************************/
+/*! exports provided: untils */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"untils\", function() { return untils; });\n/* harmony import */ var _environment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./environment */ \"./modules/environment/environment.js\");\n\r\n\r\nconst join = function(mma){ return mma.join(); };\r\nconst chain=Object(_environment__WEBPACK_IMPORTED_MODULE_0__[\"curry\"])(function (f,m) {\r\n    return m.map(f).join();\r\n});\r\n\r\n\r\nconst untils={join,chain,id: _environment__WEBPACK_IMPORTED_MODULE_0__[\"id\"],trace: _environment__WEBPACK_IMPORTED_MODULE_0__[\"trace\"]};\r\n\n\n//# sourceURL=webpack:///./modules/environment/untils.js?");
 
 /***/ }),
 

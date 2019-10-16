@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Cache-Control" content="no-store">
+    <meta charset="UTF-8">
+    <title>测试</title>
+    <script src="src/ramda.min.js"></script>
+</head>
+<body>
+<script>
+    const of=function (x) {
+        return new this(x);
+    };
+    const map=function (f) {
+        return  this.isNothing()
+                ?this.constructor.of(null)
+                :this.constructor.of(f(this.value));
+    };
+    const isNothing=function () {
+        return (this.value===null||this.value===undefined);
+    };
+    const join=function () {
+        return this.isNothing()?this.constructor.of(null):this.value;
+    };
+    const chain=function (f) {
+        return this.map(f).join();
+    };
+    const ap=function (otherContainer) {
+        return otherContainer.map(this.value);
+    };
+
+
+
+    const IO=function (f) {
+        this.value=f;
+    };
+    IO.of=function (x) {
+        return new IO(function () {
+            return x;
+        })
+    };
+    IO.prototype.map=function (f) {
+        return new IO(R.compose(f,this.value));
+    };
+
+    const re1=function () {
+        return "re1";
+    };
+
+
+
+</script>
+</body>
+</html>

@@ -2,9 +2,12 @@ const R = require('ramda');
 //常用方法
 const curry=R.curry;
 const compose=R.compose;
-const extend=function (Sub,Super) {
-    const prototype=Object(Super.prototype);
-    prototype.constructor=Sub;
-    Sub.prototype=prototype;
+
+const trace=R.curry(function (tag,x) {
+    console.log(tag,x);
+    return x;
+});
+const id=function (x) {
+    return x;
 };
-export {curry,compose,extend};
+export {curry,compose,id,trace};
