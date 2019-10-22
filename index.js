@@ -5,7 +5,7 @@ import {IO} from "./modules/IO";
 import {untils} from "./modules/environment/untils";
 
 //test only
-console.log("FM.js is Running...");
+console.log("FM.js--v0.9 is Running...");
 
 const fm={Container, Maybe, Left, Right, either, IO, untils,};
 

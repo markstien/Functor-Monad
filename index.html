@@ -4,30 +4,46 @@
     <meta http-equiv="Cache-Control" content="no-store">
     <meta charset="UTF-8">
     <title>测试</title>
-    <script src="dist/fm.js?c=8"></script>
+    <script src="dist/fm.js?v=0.9"></script>
     <script src="src/ramda.min.js"></script>
 </head>
 <body>
-<div id="main">??</div>
-
 <script>
-    const $=function (selector) {
-        return new fm.IO(function () {
-            return document.querySelector(selector);
-        })
-    };
-    const getVal=R.compose(R.map(R.prop("innerHTML")),$);
-    const signIn=R.curry(function (username,password,remember_me) {
-        console.log(username,password,remember_me);
-    });
-    let d=fm.IO.of(signIn)
-        .ap(getVal('#main'))
-        .ap(getVal('#main'))
-        .ap(fm.IO.of(false));
-    //d.do();
-    
-    console.log(fm.untils.liftA2(R.add,fm.Maybe.of(2),fm.Maybe.of(3)));
+    const localStorage={};
 
+    // 练习 1
+    // ==========
+    // 写一个函数，使用 Maybe 和 ap() 实现让两个可能是 null 的数值相加。
+    // ex1 :: Number -> Number -> Maybe Number
+    var ex1 = function(x, y){
+        return fm.Maybe.of(R.add)
+            .ap(fm.Maybe.of(x))
+            .ap(fm.Maybe.of(y));
+    };
+    //console.log(ex1(1,2));
+
+    // 练习 2
+    // ==========
+    // 写一个函数，接收两个 Maybe 为参数，让它们相加。使用 liftA2 代替 ap()。
+    // ex2 :: Maybe Number -> Maybe Number -> Maybe Number
+    var ex2 = function (x,y) {
+        return fm.untils.liftA2(R.add,fm.Maybe.of(x),fm.Maybe.of(y));
+    };
+    //console.log(ex2(1,3));
+
+    // 练习 4
+    // ==========
+    // 写一个 IO，从缓存中读取 player1 和 player2，然后开始游戏。
+    localStorage.player1 = "toby";
+    localStorage.player2 = "sally";
+    var getCache = function(x) {
+        return new fm.IO(function() { return localStorage[x]; });
+    };
+    var game = R.curry(function(p1, p2) { return p1 + ' vs ' + p2; }
+    );
+    // ex4 :: IO String
+    var ex4 = fm.untils.liftA2(game,getCache("player1"),getCache("player2"));
+    //console.log(ex4.do());
 </script>
 </body>
 </html>
