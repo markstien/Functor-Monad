@@ -13,11 +13,13 @@
 
 
 
-直接引入打包好的文件：
+引入打包好的文件：
 
 ```html
 <script src="dist/fm.js"></script>
 ```
+
+导入变量：
 
 ### 文档：
 
@@ -55,3 +57,16 @@ liftA3
 
 ### Container
 <span id="Container"></span>
+
+定义一个值：
+
+```javascript
+Container.of(2)
+```
+
+使用一个值：
+
+```
+Container.of(2).map();
+```
+
