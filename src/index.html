@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Cache-Control" content="no-store">
+    <meta charset="UTF-8">
+    <title>TodoList</title>
+    <script src="../dist/fm.js?v=0.9.1.1"></script>
+    <script src="../src/ramda.min.js"></script>
+</head>
+<body>
+<div id="items"></div>
+<div>
+    <p>
+        <input id="content" type="text" placeholder="请输入待办事项"/>
+        <button id="fire">确定</button>
+    </p>
+</div>
+<script>
+    const template=function (itemObject) {
+        return `<p><li>${itemObject.content}</li></p>`;
+    };
+
+    const getContent=function () {
+      return new fm.IO(function () {
+          console.log("content");
+          return {content:document.getElementById("content").value};
+      })
+    };
+    const addList=function (itemObject) {
+        return new fm.IO(function () {
+            console.log("list");
+            return document.getElementById("items").innerHTML+=template(itemObject);
+        });
+    };
+    const cleanInput=function () {
+        return new fm.IO(function () {
+            document.getElementById("content").value="";
+        });
+    };
+
+    const watcher=R.curry(function (f,o) {
+        o.addEventListener("click",f);
+    });
+    const fire=function () {
+        return new fm.IO(function () {
+            return document.getElementById("fire");
+        })
+    };
+
+    const make=R.compose(fm.untils.chain(cleanInput), fm.untils.chain(addList), getContent);
+    const main=R.compose(fm.untils.chain(watcher(function () {make().do();})), fire);
+    main();
+</script>
+</body>
+</html>
