@@ -20,6 +20,13 @@
 ```
 
 导入变量：
+```javascript
+const [Container, Maybe, Left, Right, either, IO, untils]=fmDeconstruction;
+```
+或者直接使用fm,：
+```javascript
+fm.Container.of(2)
+```
 
 ### 文档：
 
