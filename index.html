@@ -45,5 +45,10 @@
     var ex4 = fm.untils.liftA2(game,getCache("player1"),getCache("player2"));
     //console.log(ex4.do());
 </script>
+<script>
+    const [Container, Maybe, Left, Right, either, IO, untils]=fmDeconstruction;
+
+    Container.of(2).map(R.add).ap(Container.of(3));
+</script>
 </body>
 </html>

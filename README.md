@@ -31,6 +31,7 @@ fm.Container.of(2)
 ### 文档：
 
 ###### 声明：笔者把存放值的概念（比如态射）统统称为容器（这不一定正确，只是为了好理解）。
+######       以下例子使用了ramda.js的函数式方法。（比如R.add()）
 
 容器：
 
@@ -77,3 +78,8 @@ Container.of(2)
 Container.of(2).map();
 ```
 
+在Container中使用别的容器：
+
+```javascript
+Container.of(2).map(R.add).ap(Container.of(3));
+```
