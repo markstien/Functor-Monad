@@ -4,15 +4,17 @@ import {Left,Right,either} from "./modules/Either";
 import {IO} from "./modules/IO";
 import {untils} from "./modules/environment/untils";
 
-const fm=[Container, Maybe, Left, Right, either, IO, untils];
+const fm={Container, Maybe, Left, Right, either, IO, untils};
+const fmDeconstruction=[Container, Maybe, Left, Right, either, IO, untils];
+
 try {
     window.fm=fm;
-    console.log(window.fm);
+    window.fmDeconstruction=fmDeconstruction;
 }
 catch (e) {
 
 }
-export {fm};
+export {fm,fmDeconstruction};
 
 
 
