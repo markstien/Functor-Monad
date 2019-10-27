@@ -48,6 +48,8 @@
 <script>
     const [Container, Maybe, Left, Right, IO, untils]=fmDeconstruction;
 
+    Maybe.of("Malkovich Malkovich").map(R.match(/a/ig));
+    //=> Maybe(['a', 'a'])
 </script>
 </body>
 </html>

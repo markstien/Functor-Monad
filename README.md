@@ -72,16 +72,13 @@ fm.Container.of(2)
 ### Container
 <span id="Container"></span>
 
-定义一个值：
-
-```javascript
-Container.of(2)
-```
 
 使用一个值：
 
-```
-Container.of(2).map();
+```javascript
+Container.of(2).map(function(e) {
+  console.log(e);
+});
 ```
 
 在Container中使用别的容器：
@@ -94,6 +91,17 @@ Container.of(2).map(R.add).ap(Container.of(3));
 ### Maybe
 <span id="Maybe"></span>
 
+
+```javascript
+     Maybe.of("Malkovich Malkovich").map(R.match(/a/ig));
+        //=> Maybe(['a', 'a'])
+     Maybe.of(null).map(R.match(/a/ig));
+     //=> Maybe(null)
+     Maybe.of({name: "Boris"}).map(R.prop("age")).map(R.add(10));
+     //=> Maybe(null)
+     Maybe.of({name: "Dinah", age: 14}).map(R.prop("age")).map(R.add(10));
+     //=> Maybe(24)   
+```
 
 ### Left
 <span id="Left"></span>
@@ -111,3 +119,21 @@ Container.of(2).map(R.add).ap(Container.of(3));
 
 ### either
 <span id="either"></span>
+
+### join
+<span id="join"></span>
+
+### chain
+<span id="chain"></span>
+
+### id
+<span id="id"></span>
+
+### trace
+<span id="trace"></span>
+
+### liftA2
+<span id="liftA2"></span>
+
+### liftA3
+<span id="liftA3"></span>
