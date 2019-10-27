@@ -48,26 +48,28 @@ fm.Container.of(2)
 
 
 
-#### untils：
+#### 函数式方法：
 
 
 [maybe](#maybe)
 
 [either](#either)
 
+
 [join](#join)
 
 [chain](#chain)
 
-[id](#id)
 
-[trace](#trace)
 
 [liftA2](#liftA2)
 
 [liftA3](#liftA3)
 
 
+[id](#id)
+
+[trace](#trace)
 
 ### Container
 <span id="Container"></span>
@@ -139,7 +141,15 @@ Container.of(2).map(function(e) {
 //2
 ```
 
+#### join
+剥离一层容器
 
+```javascript
+    const mmo = Maybe.of(Maybe.of("nunchucks"));
+    // Maybe(Maybe("nunchucks"))
+    mmo.join();
+    // Maybe("nunchucks")
+```
 
 ### maybe
 <span id="maybe"></span>
