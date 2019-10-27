@@ -1,4 +1,3 @@
-import {curry} from "./environment/environment";
 import {of, map, isNothing, join, chain, ap} from "./environment/Functor";
 
 const Maybe=function (x) {

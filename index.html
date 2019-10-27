@@ -48,8 +48,12 @@
 <script>
     const [Container, Maybe, Left, Right, IO, untils]=fmDeconstruction;
 
-    Maybe.of("Malkovich Malkovich").map(R.match(/a/ig));
-    //=> Maybe(['a', 'a'])
+    // io_window_ :: IO Window
+    const io_window = new IO(function(){ return window; });
+    const action=io_window.map(function(win){ return win.innerWidth });
+    action.do();
+    // 1080  宽度
+
 </script>
 </body>
 </html>

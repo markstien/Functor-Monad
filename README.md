@@ -41,7 +41,7 @@ fm.Container.of(2)
 
 [Left](#Left)
 
-[Right](#Right)
+[Right](#Left)
 
 [IO](#IO)
 
@@ -72,20 +72,12 @@ fm.Container.of(2)
 ### Container
 <span id="Container"></span>
 
-
-使用一个值：
-
 ```javascript
 Container.of(2).map(function(e) {
   console.log(e);
 });
 ```
 
-在Container中使用别的容器：
-
-```javascript
-Container.of(2).map(R.add).ap(Container.of(3));
-```
 
 
 ### Maybe
@@ -103,15 +95,50 @@ Container.of(2).map(R.add).ap(Container.of(3));
      //=> Maybe(24)   
 ```
 
-### Left
+### Left  &&  Right
 <span id="Left"></span>
 
 
-### Right
-<span id="Right"></span>
+```javascript
+    Right.of("rain").map(function(str){ return "b"+str; });
+    // Right("brain")
+    Left.of("rain").map(function(str){ return "b"+str; });
+    // Left("rain")
+    Right.of({host: 'localhost', port: 80}).map(R.prop('host'));
+    // Right('localhost')
+    Left.of("rolls eyes...").map(R.prop("host"));
+    // Left('rolls eyes...')
+```
 
 ### IO
 <span id="IO"></span>
+
+```javascript
+    // io_window_ :: IO Window
+    const io_window = new IO(function(){ return window; });
+    const action=io_window.map(function(win){ return win.innerWidth });
+    action.do();
+    // 1080  宽度
+```
+
+#### 总结————容器的几个方法
+
+#####  of
+用于初始化一个容器
+```javascript
+    Container.of(2)
+```
+
+#### map
+
+调用容器的值
+```javascript
+Container.of(2).map(function(e) {
+  console.log(e);
+})
+//2
+```
+
 
 
 ### maybe
