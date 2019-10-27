@@ -4,7 +4,7 @@
     <meta http-equiv="Cache-Control" content="no-store">
     <meta charset="UTF-8">
     <title>测试</title>
-    <script src="dist/fm.js?v=0.9"></script>
+    <script src="dist/fm.js?a=111"></script>
     <script src="src/ramda.min.js"></script>
 </head>
 <body>
@@ -46,9 +46,8 @@
     //console.log(ex4.do());
 </script>
 <script>
-    const [Container, Maybe, Left, Right, either, IO, untils]=fmDeconstruction;
+    const [Container, Maybe, Left, Right, IO, untils]=fmDeconstruction;
 
-    Container.of(2).map(R.add).ap(Container.of(3));
 </script>
 </body>
 </html>

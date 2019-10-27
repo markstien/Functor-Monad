@@ -1,6 +1,5 @@
-import {curry} from "./environment/environment";
-import {of, map, ap} from "./environment/Functor";
-import {Container} from "./Container";
+import {of,ap} from "./environment/Functor";
+
 
 const Left=function (x) {
     this.value=x;
@@ -24,10 +23,5 @@ Right.prototype.map=function (f) {
 Right.prototype.ap=function (otherContainer) {
     return ap.call(this,otherContainer);
 };
-const either=curry(function (l,r,e) {
-    switch (e.constructor) {
-        case Left:return l(e.value);
-        case Right:return r(e.value);
-    }
-});
-export {Left,Right,either};
+
+export {Left,Right};

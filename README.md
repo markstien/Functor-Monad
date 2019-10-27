@@ -1,4 +1,4 @@
-# Functor and Monad
+﻿# Functor and Monad
 
 
 
@@ -21,7 +21,7 @@
 
 导入变量：
 ```javascript
-const [Container, Maybe, Left, Right, either, IO, untils]=fmDeconstruction;
+const [Container, Maybe, Left, Right, IO, untils]=fmDeconstruction;
 ```
 或者直接使用fm,：
 ```javascript
@@ -33,33 +33,39 @@ fm.Container.of(2)
 ###### 声明：笔者把存放值的概念（比如态射）统统称为容器（这不一定正确，只是为了好理解）。
 ######       以下例子使用了ramda.js的函数式方法。（比如R.add()）
 
-容器：
+####容器：
 
 [Container](#Container)
 
-Maybe
+[Maybe](#Maybe)
 
-Left
+[Left](#Left)
 
-Right
+[Right](#Right)
 
-IO
+[IO](#IO)
 
-可用的函数式方法：
 
-either
 
-join
 
-chain
+#### untils：
 
-id
 
-trace
+[maybe](#maybe)
 
-liftA2
+[either](#either)
 
-liftA3
+[join](#join)
+
+[chain](#chain)
+
+[id](#id)
+
+[trace](#trace)
+
+[liftA2](#liftA2)
+
+[liftA3](#liftA3)
 
 
 
@@ -83,3 +89,25 @@ Container.of(2).map();
 ```javascript
 Container.of(2).map(R.add).ap(Container.of(3));
 ```
+
+
+### Maybe
+<span id="Maybe"></span>
+
+
+### Left
+<span id="Left"></span>
+
+
+### Right
+<span id="Right"></span>
+
+### IO
+<span id="IO"></span>
+
+
+### maybe
+<span id="maybe"></span>
+
+### either
+<span id="either"></span>
