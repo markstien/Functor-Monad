@@ -134,7 +134,7 @@ Container.of(2).map(function(e) {
 
 #### map(f)
 
-·f{_function_} 对容器值进行操作的函数
+·$\color{#ec7d00}{f}$ {_function_}  对容器值进行操作的函数
 
 调用容器的值
 ```javascript
