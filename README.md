@@ -126,7 +126,7 @@ Container.of(2).map(function(e) {
 
 #### 容器的几个方法
 
-#####  of
+#####  of()
 用于初始化一个容器
 ```javascript
     Container.of(2)
@@ -144,7 +144,7 @@ Container.of(2).map(function(e) {
 //2
 ```
 
-##### join
+##### join()
 剥离一层容器
 
 ```javascript
@@ -154,9 +154,11 @@ Container.of(2).map(function(e) {
     // Maybe("nunchucks")
 ```
 
-##### chain
+##### chain()
 
-map 后,紧跟着调用 join
+相当于在map 后,紧跟着调用 join
+
+
 
 ##### ap(otherContainer)
 
@@ -355,3 +357,6 @@ untils.liftA2(R.add,Container.of(2),Container.of(2));
     // Tom 123 false
 ````
 
+
+### 开源协议  
+MIT
