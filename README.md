@@ -134,7 +134,7 @@ Container.of(2).map(function(e) {
 
 #### map(f)
 
-·$\color{#ec7d00}{f}$ {_function_}  对容器值进行操作的函数
+·f{_function_} 对容器值进行操作的函数
 
 调用容器的值
 ```javascript
@@ -205,3 +205,6 @@ Container.of(2).map(function(e) {
 
 ### liftA3
 <span id="liftA3"></span>
+
+
+<font color=gray size=5>color=gray</font>
