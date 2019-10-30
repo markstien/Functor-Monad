@@ -48,11 +48,11 @@
 <script>
     const [Container, Maybe, Left, Right, IO, untils]=fmDeconstruction;
 
-    // io_window_ :: IO Window
-    const io_window = new IO(function(){ return window; });
-    const action=io_window.map(function(win){ return win.innerWidth });
-    action.do();
-    // 1080  宽度
+    untils.maybe(
+        "Nothing!",
+        function (e) {console.log(e);}
+        ,Maybe.of(null)
+    );
 
 </script>
 </body>

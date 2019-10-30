@@ -119,11 +119,12 @@ Container.of(2).map(function(e) {
     // io_window_ :: IO Window
     const io_window = new IO(function(){ return window; });
     const action=io_window.map(function(win){ return win.innerWidth });
+    //执行容器存储的函数
     action.do();
     // 1080  宽度
 ```
 
-#### 总结————容器的几个方法
+#### 容器的几个方法
 
 #####  of
 用于初始化一个容器
@@ -131,7 +132,9 @@ Container.of(2).map(function(e) {
     Container.of(2)
 ```
 
-#### map
+#### map(f)
+
+    ·f{function} 对容器值进行操作的函数
 
 调用容器的值
 ```javascript
@@ -151,9 +154,37 @@ Container.of(2).map(function(e) {
     // Maybe("nunchucks")
 ```
 
-### maybe
+### maybe(x,f,m)
 <span id="maybe"></span>
 
+    这样就可以要么返回一个静态值,要么继续愉快地在没有 Maybe 的情况下完成交易。 maybe 使我们得以避
+    免普通 map 那种命令式的 if/else 语句： if(x !== null) { return f(x)
+    } 。
+    
+参数：
+
+    ·x{string} 容器值是null时的返回值
+    
+    ·f{function} 要对容器进行的操作
+    
+    ·m{functor}  容器 
+    
+    
+```javascript
+    
+    untils.maybe(
+            "Nothing!",
+            function (e) {console.log(e);}
+            ,Maybe.of(null)
+        );
+    //"Nothing!"
+    untils.maybe(
+            "This will not be shown",
+            function (e) {console.log(e);}
+            ,Maybe.of("I am the thing to be shown.")
+        );
+    //"I am the thing to be shown."
+```
 ### either
 <span id="either"></span>
 
