@@ -134,7 +134,7 @@ Container.of(2).map(function(e) {
 
 #### map(f)
 
-    ·f{function} 对容器值进行操作的函数
+·f{_function_} 对容器值进行操作的函数
 
 调用容器的值
 ```javascript
@@ -163,11 +163,11 @@ Container.of(2).map(function(e) {
     
 参数：
 
-    ·x{string} 容器值是null时的返回值
+·x{_string_} 容器值是null时的返回值
     
-    ·f{function} 要对容器进行的操作
+·f{_function_} 要对容器进行的操作
     
-    ·m{functor}  容器 
+·m{_functor_}  容器 
     
     
 ```javascript
