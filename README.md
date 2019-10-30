@@ -1,6 +1,7 @@
 ﻿# Functor and Monad
 
 
+[一个小例子](./src/index.html)
 
 ### 它是什么?
 
