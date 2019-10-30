@@ -48,12 +48,12 @@
 <script>
     const [Container, Maybe, Left, Right, IO, untils]=fmDeconstruction;
 
-    untils.maybe(
-        "Nothing!",
-        function (e) {console.log(e);}
-        ,Maybe.of(null)
-    );
+    const signIn=R.curry(function (username,password,rememberMe) {
+        //do something...
+        console.log(username,password,rememberMe);
+    });
 
+    untils.liftA3(signIn,Container.of("Tom"),Container.of("123"),Container.of(false));
 </script>
 </body>
 </html>

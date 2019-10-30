@@ -132,7 +132,7 @@ Container.of(2).map(function(e) {
     Container.of(2)
 ```
 
-#### map(f)
+##### map(f)
 
 + **f** {_function_} 对容器值进行操作的函数
 
@@ -144,7 +144,7 @@ Container.of(2).map(function(e) {
 //2
 ```
 
-#### join
+##### join
 剥离一层容器
 
 ```javascript
@@ -153,6 +153,22 @@ Container.of(2).map(function(e) {
     mmo.join();
     // Maybe("nunchucks")
 ```
+
+##### chain
+
+map 后,紧跟着调用 join
+
+##### ap(otherContainer)
+
+这个我也讲不明白....23333
+
+```javascript
+Container.of(R.add)
+        .ap(Container.of(2))
+        .ap(Container.of(2));
+//Container {value: 4}
+```
+
 
 ### maybe(x,f,m)
 <span id="maybe"></span>
@@ -185,25 +201,157 @@ Container.of(2).map(function(e) {
         );
     //"I am the thing to be shown."
 ```
-### either
+### either(f,g,e)
 <span id="either"></span>
 
+
+用于错误处理
+
+参数：
+
++ **f** {_function_} 程序出错时的处理
++ **g** {_function_} 正常的处理
++ **e** {_object_}  容器 
+
+```javascript
+untils.either(
+        function (e) {console.log("Wrong",e)},
+        function (e) {console.log("Normal",e)},
+        Right.of("Normal.")
+    );
+//Normal Normal
+
+untils.either(
+        function (e) {console.log("Wrong",e)},
+        function (e) {console.log("Normal",e)},
+        Left.of("Wrong!")
+    );
+
+//Wrong Wrong!
+```
 ### join
 <span id="join"></span>
+剥离一层容器
+
+容器方法join的函数式写法
+
+参数：
++ **mma** {_容器_} 
+```javascript
+    const safeProp=R.curry(function (x,obj) {
+        return new Maybe(obj[x]);
+    });
+    const getName=R.compose(console.log, untils.join, safeProp("name"));
+    getName({name:"Tom"});
+    // Tom
+```
+
 
 ### chain
 <span id="chain"></span>
 
-### id
+容器方法chain 的函数式写法
+
+```javascript
+const safeProp=R.curry(function (x,obj) {
+        return new Maybe(obj[x]);
+    });
+    const safeHead=safeProp(0);
+    const firstAddressStreet =R.compose(
+        console.log,
+        untils.join,
+        R.map(safeProp('street')),
+        untils.join,
+        R.map(safeHead),
+        safeProp('addresses')
+    );
+    firstAddressStreet({addresses: [{street: {name: 'Mulburry', number: 8402}, postcode: "WC2N" }]});
+    // Maybe({name: 'Mulburry', number: 8402})
+    
+    const firstAddressStreet2 =R.compose(
+            console.log,
+            untils.chain(safeProp('street')),
+            untils.chain(safeHead),
+            safeProp('addresses')
+        );
+    
+    firstAddressStreet2({addresses: [{street: {name: 'Mulburry', number: 8402}, postcode: "WC2N" }]});
+    //Maybe({name: 'Mulburry', number: 8402})
+```
+
+### id(x)
 <span id="id"></span>
+
+原封不动返回参数x
+
 
 ### trace
 <span id="trace"></span>
 
-### liftA2
+用于编程时排错，相当于“断点”。
+
+```javascript
+const toLower=function (str) {
+        return str.toLowerCase();
+    };
+    const toUpper=function (str) {
+        return str.toUpperCase();
+    };
+
+    const mix=R.compose(
+        untils.trace("After toUpper:"),
+        R.map(toUpper),
+        untils.trace("After split:"),
+        R.split("_"),
+        untils.trace("After toLower:"),
+        toLower
+    );
+    mix("World_Wide");
+    
+    //After toLower: world_wide
+    //After split: (2) ["world", "wide"]
+    //After toUpper: (2) ["WORLD", "WIDE"]
+```
+
+
+### liftA2(f,functor1,functor2)
 <span id="liftA2"></span>
 
+容器方法ap的函数式写法
+
+参数：
++ f {function} 处理容器值的方法
+
++ functor1 {function} 一个容器
+
++ functor2 {function} 另一个容器
+
+```javascript
+untils.liftA2(R.add,Container.of(2),Container.of(2));
+
+//Container {value: 4}
+```
 ### liftA3
 <span id="liftA3"></span>
 
+容器方法ap的函数式写法
+
+参数：
++ f {function} 处理容器值的方法
+
++ functor1 {function} 一个容器
+
++ functor2 {function} 另一个容器
+
++ functor3 {function} 第三个容器
+
+````javascript
+    const signIn=R.curry(function (username,password,rememberMe) {
+        //do something...
+        console.log(username,password,rememberMe);
+    });
+
+    untils.liftA3(signIn,Container.of("Tom"),Container.of("123"),Container.of(false));
+    // Tom 123 false
+````
 
