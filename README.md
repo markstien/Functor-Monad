@@ -12,24 +12,6 @@
 
 ### 如何使用?
 
-
-
-引入打包好的文件：
-#### 1 浏览器环境 
-```html
-<script src="dist/fm.js"></script>
-```
-
-导入变量：
-```javascript
-const {Container, Maybe, Left, Right, IO, untils}=fm;
-```
-或者使用fm,：
-```javascript
-fm.Container.of(2)
-```
-####  2 node
-
 ```node
 npm install --save fm-markstien
 ```

@@ -6,9 +6,4 @@ import {untils} from "./modules/environment/untils";
 
 const fm={Container, Maybe, Left, Right,IO, untils};
 
-try {
-    window.fm=fm;
-}
-catch (e) {
-    exports.fm={Container, Maybe, Left, Right,IO, untils} ;
-}
+exports.fm={Container, Maybe, Left, Right,IO, untils};

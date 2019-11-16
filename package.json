@@ -1,6 +1,6 @@
 {
   "name": "fm-markstien",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "函数式容器库",
   "main": "index.js",
   "scripts": {
@@ -15,6 +15,9 @@
   "author": "markstien",
   "license": "ISC",
   "dependencies": {
+    "@babel/core": "^7.7.2",
+    "@babel/preset-env": "^7.7.1",
+    "babel-loader": "^8.0.6",
     "ramda": "^0.26.1"
   },
   "devDependencies": {
@@ -22,4 +25,3 @@
     "webpack-cli": "^3.3.9"
   }
 }
-
