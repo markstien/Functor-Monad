@@ -1,6 +1,6 @@
 {
-  "name": "fm",
-  "version": "0.0.1",
+  "name": "fm-markstien",
+  "version": "1.0.0",
   "description": "函数式容器库",
   "main": "index.js",
   "scripts": {
@@ -9,9 +9,10 @@
   },
   "keywords": [
     "函数式容器库，functor",
-    "monad"
+    "monad",
+    "functor"
   ],
-  "author": "Markstien·Song",
+  "author": "markstien",
   "license": "ISC",
   "dependencies": {
     "ramda": "^0.26.1"

@@ -15,7 +15,7 @@
 
 
 引入打包好的文件：
-
+#### 1  
 ```html
 <script src="dist/fm.js"></script>
 ```
@@ -24,11 +24,15 @@
 ```javascript
 const {Container, Maybe, Left, Right, IO, untils}=fm;
 ```
-或者直接使用fm,：
+或者使用fm,：
 ```javascript
 fm.Container.of(2)
 ```
+####  2
 
+```node
+npm install --save fm-markstien
+```
 ### 文档：
 
 ###### 声明：笔者把存放值的概念（比如态射）统统称为容器（这不一定正确，只是为了好理解）。
