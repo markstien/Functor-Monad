@@ -10,6 +10,5 @@ try {
     window.fm=fm;
 }
 catch (e) {
-
+    exports.fm={Container, Maybe, Left, Right,IO, untils} ;
 }
-exports.fm = fm;

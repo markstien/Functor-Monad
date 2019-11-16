@@ -1,8 +1,8 @@
-﻿{
+{
   "name": "fm-markstien",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "函数式容器库",
-  "main": "./dist/fm.js",
+  "main": "index.js",
   "scripts": {
     "test": "cnpm run build && node ./dist/fm.js",
     "build": "webpack --config webpack.config.js"
@@ -22,3 +22,4 @@
     "webpack-cli": "^3.3.9"
   }
 }
+

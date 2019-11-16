@@ -15,7 +15,7 @@
 
 
 引入打包好的文件：
-#### 1  
+#### 1 浏览器环境 
 ```html
 <script src="dist/fm.js"></script>
 ```
@@ -28,10 +28,15 @@ const {Container, Maybe, Left, Right, IO, untils}=fm;
 ```javascript
 fm.Container.of(2)
 ```
-####  2
+####  2 node
 
 ```node
 npm install --save fm-markstien
+```
+导入变量：
+```javascript
+const{fm}=require('./dist/fm.js');
+const {Container, Maybe, Left, Right, IO, untils}=fm;
 ```
 ### 文档：
 
