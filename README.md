@@ -22,7 +22,7 @@
 
 导入变量：
 ```javascript
-const [Container, Maybe, Left, Right, IO, untils]=fmDeconstruction;
+const {Container, Maybe, Left, Right, IO, untils}=fm;
 ```
 或者直接使用fm,：
 ```javascript
