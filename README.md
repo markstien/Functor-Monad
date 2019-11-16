@@ -35,7 +35,7 @@ npm install --save fm-markstien
 ```
 导入变量：
 ```javascript
-const{fm}=require('./dist/fm.js');
+const{fm}=require("fm-markstien/use");
 const {Container, Maybe, Left, Right, IO, untils}=fm;
 ```
 ### 文档：

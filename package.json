@@ -1,6 +1,6 @@
 {
   "name": "fm-markstien",
-  "version": "1.0.3",
+  "version": "1.0.6",
   "description": "函数式容器库",
   "main": "index.js",
   "scripts": {
